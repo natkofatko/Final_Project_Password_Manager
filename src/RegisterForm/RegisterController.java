@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 
 public class RegisterController implements Initializable
 {
-//
+///
 
     @FXML private TextField username, email;
     @FXML private PasswordField password, confirmpassword;
