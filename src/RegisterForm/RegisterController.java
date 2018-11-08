@@ -4,13 +4,14 @@ import database.dbConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,18 +27,19 @@ public class RegisterController implements Initializable
     @FXML private Hyperlink signinhyperlink;
     @FXML private CheckBox checkbox;
     private dbConnection database;
-Connection conn;
+private Connection conn;
+private Alert alert;
 
     public void initialize(URL url, ResourceBundle rs)
     {
 
     }
-    //code for regustration
+    //code for registration
         @FXML
         private void addNewUser(ActionEvent event)
         {
-        boolean comparePassword = password.getText().equalsIgnoreCase(confirmpassword.getText());
-
+         boolean comparePassword = password.getText().equalsIgnoreCase(confirmpassword.getText());
+         boolean emailFormat = email.getText().contains("@");
 
             String sqlInsert = "Insert into userpass1 (username, email,password,confirmpassword) values (?,?,?,?)";
 
@@ -58,40 +60,54 @@ Connection conn;
                         ||password.getText().equalsIgnoreCase("") ||confirmpassword.getText().equalsIgnoreCase(""))
 
                 {
-                    Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
-                    alert2.setContentText("MISSING SOME INFORMATION!");
-                    alert2.initStyle(StageStyle.UNDECORATED);
-                    alert2.showAndWait();
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText("MISSING SOME INFORMATION!");
+                    alert.initStyle(StageStyle.UNDECORATED);
+                    alert.getDialogPane().setBackground((new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY))));
+                    alert.showAndWait();
 
                 }
+                else if (emailFormat!=true){
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText("EMAIL WRONG FORMAT!");
+                    alert.initStyle(StageStyle.UNDECORATED);
+                    alert.getDialogPane().setBackground((new Background(new BackgroundFill(Color.DARKRED, CornerRadii.EMPTY, Insets.EMPTY))));
+                    alert.showAndWait();
+                }
+
+
                 else if(comparePassword!=true) {
 
-                    Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
-                    alert2.setContentText("PASSWORDS DO NOT MATCH!");
-                    alert2.initStyle(StageStyle.UNDECORATED);
-                    alert2.showAndWait();
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText("PASSWORDS DO NOT MATCH!");
+                    alert.initStyle(StageStyle.UNDECORATED);
+                    alert.getDialogPane().setBackground((new Background(new BackgroundFill(Color.DEEPPINK, CornerRadii.EMPTY, Insets.EMPTY))));
+                    alert.showAndWait();
+
+                    //alert.getDialogPane().setStyle("-fx-background-color: #FFFFF");
+                 // alert.setStyle("-fx-background-color: #FFFFFF;");
                 }
 
                  else
                      if (checkbox.isSelected()) {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setHeaderText("REGISTRATION SUCCESFUL");
                     alert.initStyle(StageStyle.UNDECORATED);
-
-
+                    alert.getDialogPane().setBackground((new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY))));
                     alert.showAndWait();
                     Stage stage1 = (Stage) this.registernow.getScene().getWindow();
                     stage1.close();
                 }
 
                 else {
-                    Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-                    alert1.setHeaderText("PLESAE ACCEPT THR TERMS OF USE AND PRIVACY POLICY");
-                    alert1.initStyle(StageStyle.UNDECORATED);
-
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText("PLESAE ACCEPT THR TERMS OF USE \n AND PRIVACY POLICY");
+                    alert.initStyle(StageStyle.UNDECORATED);
+                    alert.getDialogPane().setBackground((new Background(new BackgroundFill(Color.DEEPPINK, CornerRadii.EMPTY, Insets.EMPTY))));
 
                     //alert1.showAndWait();
-                    Optional<ButtonType> result1 = alert1.showAndWait();
+                    Optional<ButtonType> result1 = alert.showAndWait();
 
                 }
 
