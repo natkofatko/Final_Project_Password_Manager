@@ -35,7 +35,7 @@ private Alert alert;
     {
 
     }
-    //code for registration
+    ////code for registration
         @FXML
         private void addNewUser(ActionEvent event)
         {
