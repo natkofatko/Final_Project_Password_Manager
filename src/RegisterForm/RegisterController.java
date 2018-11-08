@@ -75,7 +75,7 @@ private Alert alert;
                     alert.getDialogPane().setBackground((new Background(new BackgroundFill(Color.DARKRED, CornerRadii.EMPTY, Insets.EMPTY))));
                     alert.showAndWait();
                 }
-
+////////////
 
                 else if(comparePassword!=true) {
 
