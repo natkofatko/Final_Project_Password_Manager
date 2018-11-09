@@ -1,5 +1,7 @@
 package RegisterForm;
 
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import database.dbConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,8 +24,8 @@ public class RegisterController implements Initializable
 {
 ///
 
-    @FXML private TextField username, email;
-    @FXML private PasswordField password, confirmpassword;
+    @FXML private JFXTextField username, email;
+    @FXML private JFXPasswordField password, confirmpassword;
     @FXML private Button xclose, registernow;
     @FXML private Hyperlink signinhyperlink;
     @FXML private CheckBox checkbox;
@@ -40,11 +42,12 @@ private Alert alert;
         private void addNewUser(ActionEvent event)
         {
          boolean comparePassword = password.getText().equalsIgnoreCase(confirmpassword.getText());
-         boolean emailFormat = email.getText().contains("@");
+         boolean emailFormat = email.getText().contains("@")&&email.getText().contains(".");
 
             String sqlInsert = "Insert into userpass1 (username, email,password,confirmpassword) values (?,?,?,?)";
 
             try{
+
                 conn = dbConnection.getCOnnection();
                 PreparedStatement stmt = conn.prepareStatement(sqlInsert);
                 stmt.setString(1,this.username.getText());

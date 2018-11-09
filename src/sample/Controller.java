@@ -76,7 +76,8 @@ public void initialize(URL url, ResourceBundle rb)
                 Pane root = (Pane) loader.load(Main.class.getResource("/UserWindow/Login.fxml"));
                 // LoginController loginContr = (LoginController) loader.getController();
                 //Scene scene = new Scene(root);
-                userStage.setScene(new Scene(root, 1273, 735));
+                userStage.initStyle(StageStyle.UNDECORATED);
+                userStage.setScene(new Scene(root, 1100, 750));
 
                 //  userStage.setScene(scene);
                 // userStage.initStyle(StageStyle.UNDECORATED);
@@ -102,6 +103,9 @@ public void initialize(URL url, ResourceBundle rb)
         signinlable.setText(t.getText());
         username.getStyleClass().add("wrong-credentials");
         password.getStyleClass().add("wrong-credentials");
+        username.setText("");
+        password.setText("");
+
 
 
         }
