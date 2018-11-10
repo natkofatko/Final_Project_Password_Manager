@@ -2,6 +2,8 @@ package UserWindow;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +12,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -21,8 +24,11 @@ import sample.Main;
 import sample.dbStatus;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import database.dbConnection;
 
 
 
@@ -37,9 +43,11 @@ public class LoginController implements Initializable{
     @FXML
     TableColumn<UserData, String> addresscollumn;
     @FXML
-    TableColumn<UserData, String> categorycollumn;
+    TableColumn<UserData, String> groupcollumn;
     @FXML
     TableColumn<UserData, String> passwordcollumn;
+    private dbConnection db;
+    private ObservableList<UserData> data;
 
 
     public void initialize(URL url, ResourceBundle rs)
@@ -63,6 +71,31 @@ public class LoginController implements Initializable{
 
 }
 
+@FXML
+private void loadData(ActionEvent event)
+{
+    try {
+        Connection conn = dbConnection.getCOnnection();
+        this.data= FXCollections.observableArrayList();
+        ResultSet rs = conn.createStatement().executeQuery("SELECT* FROM USERDATA");
+        while(rs.next())
+        {
+            this.data.add( new UserData(rs.getString(1), rs.getString(3), rs.getString(4)));
+
+        }
+        this.usernamecollumn.setCellValueFactory(new PropertyValueFactory<UserData,String>("username"));
+        this.passwordcollumn.setCellValueFactory(new PropertyValueFactory<UserData,String>("password"));
+        this.addresscollumn.setCellValueFactory(new PropertyValueFactory<UserData,String>("address"));
+
+        this.usertable.setItems(null);
+        this.usertable.setItems(this.data);
+
+    }
+    catch(Exception e)
+    {
+        e.printStackTrace();
+    }
+}
 
     @FXML
     private void logout(ActionEvent event) throws Exception

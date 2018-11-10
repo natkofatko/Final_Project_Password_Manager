@@ -22,8 +22,11 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import sample.dbStatus;
 
-
+import  database.dbConnection;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -34,6 +37,7 @@ public class NewEntryController implements Initializable{
     @FXML private JFXTextField username, urladdress;
     @FXML private JFXPasswordField password;
     @FXML private JFXComboBox<groupOption> groups;
+    private dbConnection conn;
 
     dbStatus dataBase= new dbStatus();
     public void initialize(URL url, ResourceBundle rb) {
@@ -54,6 +58,43 @@ public class NewEntryController implements Initializable{
         password.setText("");
 
 
+    }
+    @FXML
+    private void addNewEntry(ActionEvent event) throws SQLException,Exception {
+        String SqlInsert = "INSERT INTO USERDATA(username,address,password) VALUES(?,?,?)";
+
+        try {
+            Connection connection = dbConnection.getCOnnection();
+            PreparedStatement stmp = connection.prepareStatement(SqlInsert);
+
+            stmp.setString(1, this.username.getText());
+            // stmp.setString(2,this.groups.getEditor().getText());
+            stmp.setString(2, this.urladdress.getText());
+            stmp.setString(3, this.password.getText());
+
+            stmp.execute();
+            connection.close();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("NEW ENTRY AADDED SUCCESFULLY");
+            alert.initStyle(StageStyle.UNDECORATED);
+            alert.getDialogPane().setBackground((new Background(new BackgroundFill(Color.LIGHTGREEN, CornerRadii.EMPTY, Insets.EMPTY))));
+            alert.showAndWait();
+            Stage stage1 = (Stage) this.username.getScene().getWindow();
+            stage1.close();
+
+
+
+
+
+
+
+
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @FXML

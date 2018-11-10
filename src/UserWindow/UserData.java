@@ -6,16 +6,17 @@ import javafx.beans.property.StringProperty;
 public class UserData {
 
 private final StringProperty username;
-private final StringProperty category;
+//private final StringProperty category;
 private final StringProperty password;
 private final StringProperty address;
 
-public UserData(String username, String category, String password, String address)
+public UserData(String username, String address, String password)
 {
     this.username=new SimpleStringProperty(username);
-    this.category=new SimpleStringProperty(category);
+   // this.category=new SimpleStringProperty(category);
     this.password=new SimpleStringProperty(password);
     this.address=new SimpleStringProperty(address);
+
 }
 
 
@@ -31,17 +32,8 @@ public UserData(String username, String category, String password, String addres
         this.username.set(username);
     }
 
-    public String getCategory() {
-        return category.get();
-    }
 
-    public StringProperty categoryProperty() {
-        return category;
-    }
 
-    public void setCategory(String category) {
-        this.category.set(category);
-    }
 
     public String getPassword() {
         return password.get();
