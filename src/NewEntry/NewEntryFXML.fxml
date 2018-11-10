@@ -15,8 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="619.0" prefWidth="526.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewEntry.NewEntryFXML">
+<AnchorPane prefHeight="619.0" prefWidth="526.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewEntry.NewEntryController">
    <children>
       <ImageView fitHeight="619.0" fitWidth="526.0" pickOnBounds="true">
          <image>
@@ -35,13 +34,13 @@
       </ImageView>
       <Pane layoutX="84.0" layoutY="81.0" prefHeight="516.0" prefWidth="359.0">
          <children>
-            <JFXTextField labelFloat="true" layoutX="46.0" layoutY="87.0" prefHeight="31.0" prefWidth="281.0" promptText="      Username" />
-            <JFXTextField labelFloat="true" layoutX="55.0" layoutY="227.0" prefHeight="31.0" prefWidth="274.0" promptText="      URL address" />
-            <JFXPasswordField labelFloat="true" layoutX="53.0" layoutY="156.0" prefHeight="31.0" prefWidth="274.0" promptText="      Password " />
-            <JFXComboBox labelFloat="true" layoutX="53.0" layoutY="291.0" prefHeight="31.0" prefWidth="281.0" promptText="      Category" />
-            <JFXButton layoutX="23.0" layoutY="379.0" prefHeight="31.0" prefWidth="312.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Add Entry" />
-            <JFXButton layoutX="24.0" layoutY="417.0" prefHeight="31.0" prefWidth="312.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Clear" />
-            <JFXButton layoutX="24.0" layoutY="456.0" prefHeight="31.0" prefWidth="312.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Cancel" />
+            <JFXTextField fx:id="username" labelFloat="true" layoutX="46.0" layoutY="87.0" prefHeight="31.0" prefWidth="281.0" promptText="      Username" />
+            <JFXTextField fx:id="urladdress" labelFloat="true" layoutX="55.0" layoutY="227.0" prefHeight="31.0" prefWidth="274.0" promptText="      URL address" />
+            <JFXPasswordField fx:id="password" labelFloat="true" layoutX="53.0" layoutY="156.0" prefHeight="31.0" prefWidth="274.0" promptText="      Password " />
+            <JFXComboBox fx:id="groups" labelFloat="true" layoutX="53.0" layoutY="291.0" prefHeight="31.0" prefWidth="281.0" promptText="Groups" />
+            <JFXButton fx:id="addentry" layoutX="23.0" layoutY="379.0" prefHeight="31.0" prefWidth="312.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Add Entry" />
+            <JFXButton layoutX="24.0" layoutY="417.0" onAction="#clearFields" prefHeight="31.0" prefWidth="312.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Clear" />
+            <JFXButton layoutX="24.0" layoutY="456.0" onAction="#Exit" prefHeight="31.0" prefWidth="312.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Cancel" />
             <Label layoutX="77.0" layoutY="28.0" prefHeight="21.0" prefWidth="196.0" text="New Entry">
                <font>
                   <Font size="23.0" />

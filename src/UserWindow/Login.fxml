@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="1080.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="1080.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserWindow.LoginController">
    <children>
       <ImageView fitHeight="752.0" fitWidth="1089.0" pickOnBounds="true">
          <image>
@@ -34,17 +34,17 @@
       </ImageView>
       <Pane layoutY="-3.0" prefHeight="759.0" prefWidth="266.0" style="-fx-background-color: #3D4646;">
          <children>
-            <JFXButton layoutX="22.0" layoutY="182.0" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Add new entry" textFill="#a4d4db">
+            <JFXButton layoutX="22.0" layoutY="182.0" onAction="#addNewEntry" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Add new entry" textFill="#a4d4db">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="22.0" layoutY="221.0" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Delete entry" textFill="#a4d4db">
+            <JFXButton fx:id="deleteentry" layoutX="22.0" layoutY="221.0" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Delete entry" textFill="#a4d4db">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="22.0" layoutY="260.0" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Edit entry" textFill="#a4d4db">
+            <JFXButton fx:id="editentry" layoutX="22.0" layoutY="260.0" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Edit entry" textFill="#a4d4db">
                <font>
                   <Font size="18.0" />
                </font>
@@ -52,33 +52,27 @@
             <FontAwesomeIconView fill="#97d7e8" glyphName="TRASH" layoutX="43.0" layoutY="245.0" size="16.0" />
             <FontAwesomeIconView fill="#97d7e8" glyphName="EDIT" layoutX="43.0" layoutY="284.0" size="16" />
             <FontAwesomeIconView fill="#97d7e8" glyphName="PLUS" layoutX="41.0" layoutY="206.0" size="16" />
-            <Pane layoutX="16.0" layoutY="646.0" prefHeight="55.0" prefWidth="235.0">
+            <Pane layoutX="17.0" layoutY="690.0" prefHeight="55.0" prefWidth="235.0">
                <children>
                   <FontAwesomeIconView fill="#97d7e8" glyphName="SIGN_OUT" layoutX="14.0" layoutY="29.0" size="16" />
-                  <JFXButton layoutX="27.0" layoutY="4.0" prefHeight="39.0" prefWidth="91.0" style="-fx-background-color: transparent;" text="Log out" textFill="#a4d4db">
+                  <JFXButton fx:id="logout" layoutX="27.0" layoutY="4.0" onAction="#logout" prefHeight="39.0" prefWidth="91.0" style="-fx-background-color: transparent;" text="Log out" textFill="#a4d4db">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="140.0" layoutY="4.0" prefHeight="39.0" prefWidth="81.0" style="-fx-background-color: transparent;" text="Exit" textFill="#a4d4db">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </JFXButton>
-                  <FontAwesomeIconView fill="#97d7e8" glyphName="CLOSE" layoutX="140.0" layoutY="29.0" size="16" />
                </children>
             </Pane>
-            <JFXButton layoutX="22.0" layoutY="355.0" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="        Generate password" textFill="#a4d4db">
+            <JFXButton fx:id="generatepassword" layoutX="22.0" layoutY="355.0" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="        Generate password" textFill="#a4d4db">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="21.0" layoutY="394.0" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="       Score the strength" textFill="#a4d4db">
+            <JFXButton fx:id="scorethestrength" layoutX="21.0" layoutY="394.0" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="       Score the strength" textFill="#a4d4db">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="22.0" layoutY="433.0" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="      Analyze password " textFill="#a4d4db">
+            <JFXButton fx:id="analyzepassword" layoutX="22.0" layoutY="433.0" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="      Analyze password " textFill="#a4d4db">
                <font>
                   <Font size="18.0" />
                </font>
@@ -92,16 +86,17 @@
                   <Font name="Serif Bold" size="32.0" />
                </font>
             </Label>
-            <TextField layoutX="16.0" layoutY="114.0" prefHeight="31.0" prefWidth="235.0" promptText="           Search for category" style="-fx-background-radius: 20;" />
-            <FontAwesomeIconView fill="#a9b3b5" glyphName="SEARCH" layoutX="43.0" layoutY="135.0" size="16" />
+            <FontAwesomeIconView fill="#a9b3b5" glyphName="SEARCH" layoutX="46.0" layoutY="143.0" size="16" />
+            <TextField fx:id="search" alignment="CENTER" layoutX="25.0" layoutY="122.0" prefHeight="26.0" prefWidth="216.0" promptText="       Search " style="-fx-background-radius: 20; -fx-background-color: white;" text="         " />
+            <FontAwesomeIconView fill="#868181" glyphName="SEARCH" layoutX="40.0" layoutY="142.0" size="16.0" />
          </children>
       </Pane>
-      <TableView layoutX="266.0" layoutY="108.0" prefHeight="444.0" prefWidth="810.0" style="-fx-background-color: transparent;">
+      <TableView fx:id="usertable" layoutX="266.0" layoutY="108.0" prefHeight="444.0" prefWidth="810.0" style="-fx-background-color: transparent;">
         <columns>
-          <TableColumn prefWidth="210.0" text="Username" />
-            <TableColumn prefWidth="186.0" text="Category" />
-            <TableColumn prefWidth="197.0" text="Address" />
-          <TableColumn maxWidth="266.0" minWidth="-1.0" prefWidth="216.0" resizable="false" text="Password" />
+          <TableColumn fx:id="usernamecollumn" prefWidth="210.0" text="Username" />
+            <TableColumn fx:id="categorycollumn" prefWidth="186.0" text="Category" />
+            <TableColumn fx:id="addresscollumn" prefWidth="197.0" text="Address" />
+          <TableColumn fx:id="passwordcollumn" maxWidth="266.0" minWidth="-1.0" prefWidth="216.0" resizable="false" text="Password" />
         </columns>
       </TableView>
    </children>
