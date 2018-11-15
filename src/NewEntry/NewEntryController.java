@@ -9,14 +9,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -33,7 +36,7 @@ import java.util.ResourceBundle;
 
 public class NewEntryController implements Initializable{
 
-    @FXML private JFXButton addentry, clear, cancel;
+    @FXML private JFXButton addentry, clear, cancel, generatenewpassword;
     @FXML private JFXTextField username, urladdress;
     @FXML private JFXPasswordField password;
     @FXML private JFXComboBox<groupOption> groups;
@@ -49,7 +52,29 @@ public class NewEntryController implements Initializable{
         this.groups.setItems(FXCollections.observableArrayList(groupOption.values()));
     }
 
+    // Set new password
+    public void initPassword(String pass)
+    {
+        password.setText(pass);
+    }
 
+    //Open generateNewPasswordWindow
+    @FXML
+    private void generatePassword(ActionEvent event) throws Exception
+    {
+        Stage stage1 = (Stage) this.username.getScene().getWindow();
+        stage1.close();
+        Stage userStage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        Pane root = (Pane) loader.load(getClass().getResource("/GenerateNewpassword/newPassword.fxml"));
+        Scene scene= new Scene(root);
+       // userStage.initStyle(StageStyle.UNDECORATED);
+        userStage.setScene(scene);
+        userStage.setResizable(false);
+
+        userStage.show();
+    }
+//Clear all the text fields
     @FXML
     private void clearFields(ActionEvent event)
     {
@@ -59,6 +84,13 @@ public class NewEntryController implements Initializable{
 
 
     }
+
+    /**
+     *
+     * @param event
+     * @throws SQLException
+     * @throws Exception
+     */
     @FXML
     private void addNewEntry(ActionEvent event) throws SQLException,Exception {
         String SqlInsert = "INSERT INTO USERDATA(username,address,password) VALUES(?,?,?)";

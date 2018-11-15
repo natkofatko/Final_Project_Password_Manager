@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import sample.Main;
 import sample.dbStatus;
+import java.util.regex.*;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -32,12 +33,15 @@ import database.dbConnection;
 
 
 
-public class LoginController implements Initializable{
-    @FXML private TextField search;
-    @FXML private JFXButton addnewentry, deleteentry, editentry, generatepassword, scorethestrength;
-
-    @FXML private JFXButton logout,exit, analyzepassword;
-    @FXML TableView<UserData> usertable;
+public class LoginController implements Initializable {
+    @FXML
+    private TextField search, displaypassword;
+    @FXML
+    private JFXButton addnewentry, deleteentry, editentry, generatepassword, scorethestrength, refresh;
+    @FXML
+    private JFXButton logout, exit, analyzepassword;
+    @FXML
+    TableView<UserData> usertable;
     @FXML
     TableColumn<UserData, String> usernamecollumn;
     @FXML
@@ -50,10 +54,55 @@ public class LoginController implements Initializable{
     private ObservableList<UserData> data;
 
 
-    public void initialize(URL url, ResourceBundle rs)
+    public void initialize(URL url, ResourceBundle rs) {
+
+    }
+
+    @FXML
+    private void deleteEntry(ActionEvent event)
     {
 
     }
+    @FXML
+    private void editEntry(ActionEvent event)
+    {
+
+    }
+    @FXML
+    private void generateNewPassword(ActionEvent event) {
+        String strongPassword = "";
+        int passwordLength = (int) (Math.random() * 5 + 12); //returns a minimum of 12
+
+        String lowerCase = "abcdefghijklmnopqrstuvwxyz";
+        String upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String integers = "0123456789";
+        String specialCharacters = "!" + "\"" + "#$%&" + "\'" + "()*,+-./:\\;<=>?@[\\]^_`{|}~";
+
+        for (int i = 0; i < passwordLength; i++) {
+            int a = (int) (Math.random() * 3); //generates a number between 0 and 2
+            if (a == 0) {
+                int index = (int) (Math.random() * 26);
+                int upperOrLower = (int) (Math.random() * 2);
+                if (upperOrLower == 0) {
+                    strongPassword += lowerCase.charAt(index);
+                } else {
+                    strongPassword += upperCase.charAt(index);
+                }
+            } else if (a == 1) {
+                int index2 = (int) (Math.random() * integers.length());
+                strongPassword += integers.charAt(index2);
+            } else {
+                int index3 = (int) (Math.random() * specialCharacters.length());
+                strongPassword += specialCharacters.charAt(index3);
+            }
+
+        }
+        displaypassword.setText(strongPassword);
+
+
+    }
+
+
 
 @FXML
     private void addNewEntry(ActionEvent event) throws Exception
@@ -96,6 +145,7 @@ private void loadData(ActionEvent event)
         e.printStackTrace();
     }
 }
+
 
     @FXML
     private void logout(ActionEvent event) throws Exception
