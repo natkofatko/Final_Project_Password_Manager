@@ -5,6 +5,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +28,7 @@ import javafx.stage.StageStyle;
 import sample.Main;
 import sample.dbStatus;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.regex.*;
 
@@ -57,34 +60,36 @@ public class LoginController implements Initializable {
     TableColumn<UserData, String> passwordcollumn;
     private dbConnection db;
     private ObservableList<UserData> data;
+    private UserData user;
 
 
     public void initialize(URL url, ResourceBundle rs) {
 
     }
-/*
-Edid entry by clicking twice on selected field
- */
-    @FXML
-    private void editEntry(MouseEvent event)
-    {
 
-     usertable.setEditable(true);
-     usernamecollumn.setCellFactory(TextFieldTableCell.forTableColumn());
-     passwordcollumn.setCellFactory(TextFieldTableCell.forTableColumn());
-     addresscollumn.setCellFactory(TextFieldTableCell.forTableColumn());
+    /*
+    Edid entry by clicking twice on selected field
+     */
+    @FXML
+    private void editEntry(MouseEvent event) {
+
+        usertable.setEditable(true);
+        usernamecollumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        passwordcollumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        addresscollumn.setCellFactory(TextFieldTableCell.forTableColumn());
     }
+
 
     /*
     this method will open new Entry window, load selected entry and allow you to make some changes to it
      */
     @FXML
-    private void editEntryAllFields(ActionEvent event)
-    {
+    private void editEntryAllFields(ActionEvent event) {
 
     }
+
     /*
-    This method removes selected entry from the UI
+    This method removes selected entry from the UI just temporary
      */
     @FXML
     private void deleteEntry(ActionEvent event) {
@@ -108,14 +113,6 @@ Edid entry by clicking twice on selected field
 //Stage user = new Stage();
 //        user.setScene(new Scene(root));
 //        user.show();
-
-
-
-
-
-
-
-
 
 
     @FXML
@@ -168,7 +165,9 @@ Edid entry by clicking twice on selected field
 
     }
 
-
+    /*
+    Load all the information from database and display them in table
+     */
     @FXML
     private void loadData(ActionEvent event) {
         try {
@@ -191,7 +190,9 @@ Edid entry by clicking twice on selected field
         }
     }
 
+    /*
 
+     */
     @FXML
     private void logout(ActionEvent event) throws Exception {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -222,5 +223,65 @@ Edid entry by clicking twice on selected field
         }
     }
 
+    /*
+    This method will delete all user information from the database
+     */
+    public void deleteEverything(ActionEvent event) throws Exception {
+        Connection conn = dbConnection.getCOnnection();
+        UserData song = usertable.getSelectionModel().getSelectedItem();
+        //ResultSet rs = conn.createStatement().executeQuery("SELECT* FROM USERDATA");
+        if (song != null) {
+
+
+            PreparedStatement statement = conn.prepareStatement("DELETE FROM USERDATA WHERE username = ?");
+            statement.setString(1, song.getUsername());
+            statement.executeUpdate();
+            // Update the table
+            loadData(event);
+        }
+
+    }
+
+    @FXML
+    private void SearchTable(MouseEvent event) {
+        this.usernamecollumn.setCellValueFactory(new PropertyValueFactory<UserData, String>("username"));
+        usernamecollumn.setCellValueFactory(cellData -> cellData.getValue().usernameProperty());
+        passwordcollumn.setCellValueFactory(cellData -> cellData.getValue().passwordProperty());
+        addresscollumn.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
+
+        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<UserData> filteredData = new FilteredList<>(data, p -> true);
+
+        // 2. Set the filter Predicate whenever the filter changes.
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(person -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (person.getUsername().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                } else if (person.getPassword().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                } else if (person.getAddress().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                return false; // Does not match.
+            });
+        });
+
+        // 3. Wrap the FilteredList in a SortedList.
+        SortedList<UserData> sortedData = new SortedList<>(filteredData);
+
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(usertable.comparatorProperty());
+
+        // 5. Add sorted (and filtered) data to the table.
+        usertable.setItems(sortedData);
+    }
 
 }
