@@ -259,7 +259,7 @@ public class LoginController implements Initializable {
     }
 
     /*
-    This method will delete all user information from the database
+    This method will delete all user information from  the database
      */
     public void deleteEverything(ActionEvent event) throws Exception {
         Connection conn = dbConnection.getCOnnection();
