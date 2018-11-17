@@ -29,6 +29,7 @@ import sample.Main;
 import sample.dbStatus;
 
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.regex.*;
 
@@ -103,17 +104,12 @@ public class LoginController implements Initializable {
 //
     }
 
-//    @FXML
-//    private void clickToeditEntry(ActionEvent event) throws Exception {
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(getClass().getResource("/NewEntry/NewEntryFXML.fxml"));
-//        Parent root = (Parent) loader.load();
-////        NewEntryController controller22 = loader.getController();
-////        controller22.
-//Stage user = new Stage();
-//        user.setScene(new Scene(root));
-//        user.show();
 
+    @FXML
+    private void exit(ActionEvent event) {
+        Stage stage = (Stage) this.search.getScene().getWindow();
+        stage.close();
+    }
 
     @FXML
     private void generateNewPassword(ActionEvent event) {
@@ -222,28 +218,95 @@ public class LoginController implements Initializable {
             alert.close();
         }
     }
+@FXML
+    public ObservableList<UserData> getEntries2 (ActionEvent event) throws Exception{
+        // TODO Auto-generated method stub
+
+        try{
+            //System.out.println(account.getEntries());
+            ObservableList<UserData> userEntries = FXCollections.observableArrayList(getEntries());
+            return userEntries;
+        }
+        catch(Exception e){
+
+        }
+        return null;
+    }
+
+    public ArrayList<UserData> getEntries() throws Exception {
+        Connection conn = dbConnection.getCOnnection();
+        ArrayList<UserData> entryList = new ArrayList<>();
+        UserData selectedUser = usertable.getSelectionModel().getSelectedItem();
+        String sql = "Select * from USERDATA where username =?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, selectedUser.getPassword());
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next()) {
+            System.out.println(rs.getString("password"));
+        }
+    return entryList;
+
+    }
+
+
+
+    @FXML
+    private void onAnalyzeBTClick(MouseEvent event) throws Exception {
+        System.out.println("lol");
+        ObservableList<UserData> selectedItems = usertable.getSelectionModel().getSelectedItems();
+        System.out.println(selectedItems.toString());
+
+    }
 
     /*
     This method will delete all user information from the database
      */
     public void deleteEverything(ActionEvent event) throws Exception {
         Connection conn = dbConnection.getCOnnection();
-        UserData song = usertable.getSelectionModel().getSelectedItem();
+        UserData selectedUser = usertable.getSelectionModel().getSelectedItem();
         //ResultSet rs = conn.createStatement().executeQuery("SELECT* FROM USERDATA");
-        if (song != null) {
-
+        if ( selectedUser!= null) {
 
             PreparedStatement statement = conn.prepareStatement("DELETE FROM USERDATA WHERE username = ?");
-            statement.setString(1, song.getUsername());
+            statement.setString(1, selectedUser.getUsername());
             statement.executeUpdate();
             // Update the table
             loadData(event);
         }
-
     }
+@FXML
+    public void ScoreTheStrength(ActionEvent event) throws Exception {
+    ResultSet rs;
 
+    Connection conn = dbConnection.getCOnnection();
+    UserData selecteduser = usertable.getSelectionModel().getSelectedItem();
+    // UserData selectedPassword = usertable.getSelectionModel().getSelectedItem();
+    if (selecteduser != null) {
+        String sql = ("SELECT * FROM USERDATA");
+
+        PreparedStatement st = conn.prepareStatement(sql);
+st.setString(1,selecteduser.getUsername());
+
+        rs = st.executeQuery();
+
+       // while (rs.next()) {
+            // String name = rs.getString("username");
+        String ss = rs.getString(1);
+            ArrayList<UserData> list = new ArrayList<>();
+            //list.add(ss);
+
+        conn.close();
+        // ObservableList<String> ids = FXCollections.observableArrayList(rs.getString("password"));
+        //System.out.println(ids);
+    }
+}
+
+/*;
+Search for given username or password
+ */
     @FXML
-    private void SearchTable(MouseEvent event) {
+    private void SearchTable(MouseEvent event)
+    {
         this.usernamecollumn.setCellValueFactory(new PropertyValueFactory<UserData, String>("username"));
         usernamecollumn.setCellValueFactory(cellData -> cellData.getValue().usernameProperty());
         passwordcollumn.setCellValueFactory(cellData -> cellData.getValue().passwordProperty());
@@ -282,6 +345,7 @@ public class LoginController implements Initializable {
 
         // 5. Add sorted (and filtered) data to the table.
         usertable.setItems(sortedData);
+        //sortedData.get(2);
     }
 
 }
