@@ -28,6 +28,7 @@ import javafx.stage.StageStyle;
 import sample.Main;
 import sample.dbStatus;
 
+import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class LoginController implements Initializable {
     @FXML
     private TextField search, displaypassword;
     @FXML
-    private JFXButton addnewentry, deleteentry, editentry, generatepassword, scorethestrength, refresh;
+    private JFXButton addnewentry, deleteentry, editentry, generatepassword, scorethestrength, refresh, watchover;
     @FXML
     private JFXButton logout, exit, analyzepassword;
     @FXML
@@ -66,6 +67,13 @@ public class LoginController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rs) {
 
+        Tooltip tooltip1 = new Tooltip();
+        tooltip1.setText("Score the strength of the given password");
+        scorethestrength.setTooltip(tooltip1);
+
+        Tooltip tooltip2 = new Tooltip();
+        tooltip2.setText("Check if website is secure");
+        watchover.setTooltip(tooltip2);
     }
 
     /*
@@ -80,6 +88,20 @@ public class LoginController implements Initializable {
         addresscollumn.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
+    @FXML
+    private void Watchover(ActionEvent event) throws Exception
+    {
+
+        Stage userStage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        Pane root = (Pane) loader.load(getClass().getResource("/WatchTawer/WatchtawerFXML.fxml"));
+        Scene scene = new Scene(root);
+        userStage.initStyle(StageStyle.UNDECORATED);
+        userStage.setScene(scene);
+        userStage.setResizable(false);
+
+        userStage.show();
+    }
 
     /*
     this method will open new Entry window, load selected entry and allow you to make some changes to it
@@ -99,9 +121,6 @@ public class LoginController implements Initializable {
         ObservableList<UserData> selectedRows = usertable.getSelectionModel().getSelectedItems();
         ArrayList<UserData> rows = new ArrayList<>(selectedRows);
         rows.forEach(row -> usertable.getItems().remove(row));
-
-
-//
     }
 
 
@@ -145,7 +164,20 @@ public class LoginController implements Initializable {
 
     }
 
+    @FXML
+    private void checkForStrength(ActionEvent event) throws Exception {
 
+        Stage userStage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        Pane root = (Pane) loader.load(getClass().getResource("/scoreTheStrength/ScoreFXML.fxml"));
+        Scene scene = new Scene(root);
+        userStage.initStyle(StageStyle.UNDECORATED);
+        userStage.setScene(scene);
+        userStage.setResizable(false);
+
+        userStage.show();
+
+    }
     @FXML
     private void addNewEntry(ActionEvent event) throws Exception {
 
@@ -252,10 +284,25 @@ public class LoginController implements Initializable {
 
     @FXML
     private void onAnalyzeBTClick(MouseEvent event) throws Exception {
-        System.out.println("lol");
-        ObservableList<UserData> selectedItems = usertable.getSelectionModel().getSelectedItems();
-        System.out.println(selectedItems.toString());
+System.out.println("Hello");
+ObservableList<UserData> selectedItems = usertable.getSelectionModel().getSelectedItems();
+//System.out.println(selectedItems.toString());
+Connection conn= dbConnection.getCOnnection();
+        if (selectedItems != null) {
+            String sql = ("SELECT * FROM USERDATA");
 
+
+            PreparedStatement st = conn.prepareStatement(sql);
+//            st.setString(1,selectedItems.getUsername());
+
+            ResultSet rs = st.executeQuery();
+            while(rs.next()) {
+                ArrayList<UserData> list = new ArrayList<>();
+                System.out.println(list.toString());
+                rs.getString("password");
+            }
+
+        }
     }
 
     /*
