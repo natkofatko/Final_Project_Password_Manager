@@ -24,7 +24,7 @@ public class ScoreController implements Initializable {
     public void initialize(URL url, ResourceBundle rs) {
 
     }
-
+//
     @FXML
     private void close(ActionEvent event) {
         Stage stage = (Stage) this.close.getScene().getWindow();
