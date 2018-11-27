@@ -72,9 +72,6 @@ public class PasswordAnalysis implements Initializable {
      stage.close();
 
     }
-    public void Initialize(URL url, ResourceBundle rb) {
-
-    }
 
     public boolean isPasswordValid() {
         // System.out.println(PasswordInput.getText());
