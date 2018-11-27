@@ -81,7 +81,7 @@
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="analyzepassword" layoutX="23.0" layoutY="459.0" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="      Analyze password " textFill="#a4d4db">
+            <JFXButton fx:id="analyzepassword" layoutX="23.0" layoutY="459.0" onAction="#checkAnalysis" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="      Analyze password " textFill="#a4d4db">
                <font>
                   <Font size="18.0" />
                </font>

@@ -1,8 +1,6 @@
 package UserWindow;
 
-import NewEntry.NewEntryController;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -12,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -25,14 +22,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import sample.Main;
-import sample.dbStatus;
 
-import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.regex.*;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -172,6 +164,22 @@ public class LoginController implements Initializable {
         Pane root = (Pane) loader.load(getClass().getResource("/scoreTheStrength/ScoreFXML.fxml"));
         Scene scene = new Scene(root);
         userStage.initStyle(StageStyle.UNDECORATED);
+        userStage.setScene(scene);
+        userStage.setResizable(false);
+
+        userStage.show();
+
+    }
+
+
+    @FXML
+    private void checkAnalysis(ActionEvent event) throws Exception {
+
+        Stage userStage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        Pane root = (Pane) loader.load(getClass().getResource("/PasswordAnalysisF/PasswordAnalysisFXML.fxml"));
+        Scene scene = new Scene(root);
+       // userStage.initStyle(StageStyle.UNDECORATED);
         userStage.setScene(scene);
         userStage.setResizable(false);
 

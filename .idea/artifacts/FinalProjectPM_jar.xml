@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="FinalProjectPM:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/FinalProjectPM_jar</output-path>
+    <output-path>$USER_HOME$/Desktop</output-path>
     <root id="archive" name="FinalProject.jar">
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$USER_HOME$/Desktop/META-INF/MANIFEST.MF" />
