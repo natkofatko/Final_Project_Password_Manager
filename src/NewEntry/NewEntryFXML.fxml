@@ -51,15 +51,15 @@
             <JFXButton fx:id="addentry" layoutX="24.0" layoutY="377.0" onAction="#addNewEntry" prefHeight="31.0" prefWidth="312.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Add Entry" />
             <JFXButton layoutX="24.0" layoutY="455.0" onAction="#clearFields" prefHeight="31.0" prefWidth="312.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Clear" />
             <JFXButton layoutX="24.0" layoutY="494.0" onAction="#Exit" prefHeight="31.0" prefWidth="312.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Cancel" />
-            <Label layoutX="77.0" layoutY="28.0" prefHeight="21.0" prefWidth="196.0" text="New Entry" textFill="WHITE">
+            <Label layoutX="117.0" layoutY="28.0" prefHeight="34.0" prefWidth="156.0" text="New Entry" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <FontAwesomeIconView fill="#d665b5" glyphName="USER" layoutX="23.0" layoutY="108.0" size="14.0" />
-            <FontAwesomeIconView fill="#d665b5" glyphName="LOCK" layoutX="24.0" layoutY="176.0" size="14.0" />
-            <FontAwesomeIconView fill="#d665b5" glyphName="LINK" layoutX="24.0" layoutY="247.0" size="14.0" />
-            <FontAwesomeIconView fill="#d665b5" glyphName="BARS" layoutX="31.0" layoutY="311.0" size="14.0" />
+            <FontAwesomeIconView fill="#f8ceec" glyphName="USER" layoutX="23.0" layoutY="108.0" size="16" />
+            <FontAwesomeIconView fill="#f8ceec" glyphName="LOCK" layoutX="24.0" layoutY="176.0" size="16" />
+            <FontAwesomeIconView fill="#f8ceec" glyphName="LINK" layoutX="24.0" layoutY="247.0" size="16" />
+            <FontAwesomeIconView fill="#f8ceec" glyphName="BARS" layoutX="31.0" layoutY="311.0" size="16" />
             <JFXButton fx:id="generatenewpassword" layoutX="24.0" layoutY="416.0" onAction="#generatePassword" prefHeight="31.0" prefWidth="312.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Generate new password" />
          </children>
       </Pane>

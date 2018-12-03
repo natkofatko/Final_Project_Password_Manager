@@ -130,7 +130,7 @@ public class NewEntryController implements Initializable{
             connection.close();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("New entry added succesfully");
+            alert.setHeaderText("New entry added successfuly");
             alert.initStyle(StageStyle.UNDECORATED);
             alert.getDialogPane().setBackground((new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY))));
             alert.showAndWait();

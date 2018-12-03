@@ -49,12 +49,12 @@
       </Pane>
       <Pane layoutX="110.0" layoutY="188.0" prefHeight="622.0" prefWidth="407.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="101.0" AnchorPane.topAnchor="188.0">
          <children>
-            <Label alignment="CENTER" layoutX="37.0" layoutY="41.0" prefHeight="46.0" prefWidth="310.0" text="Create your account" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="39.0" layoutY="41.0" prefHeight="46.0" prefWidth="310.0" text="Create new account" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>
             </Label>
-            <JFXCheckBox fx:id="checkbox" layoutX="45.0" layoutY="424.0" prefHeight="21.0" prefWidth="326.0" text="I accept the Terms of Use &amp;Privacy Policy " textFill="#56d113" />
+            <JFXCheckBox fx:id="checkbox" checkedColor="#ffeefd" layoutX="45.0" layoutY="424.0" prefHeight="21.0" prefWidth="326.0" text="I accept the Terms of Use &amp;Privacy Policy " textFill="#fff1fd" />
             <JFXButton fx:id="registernow" alignment="CENTER" layoutX="72.0" layoutY="489.0" onAction="#addNewUser" prefHeight="31.0" prefWidth="295.0" style="-fx-background-color: white; -fx-background-radius: 20;" text="Register Now" textFill="#9e323e">
                <font>
                   <Font name="System Bold" size="20.0" />
