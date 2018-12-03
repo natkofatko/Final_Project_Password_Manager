@@ -29,6 +29,7 @@ import  database.dbConnection;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -43,6 +44,12 @@ public class NewEntryController implements Initializable{
     private dbConnection conn;
 
     dbStatus dataBase= new dbStatus();
+
+    /**
+     *
+     * @param url
+     * @param rb
+     */
     public void initialize(URL url, ResourceBundle rb) {
         if (dataBase.isDatabaseConnected()) {
             System.out.print("Database connected succesfully");
@@ -52,12 +59,21 @@ public class NewEntryController implements Initializable{
         this.groups.setItems(FXCollections.observableArrayList(groupOption.values()));
     }
 
+    /**
+     *
+     * @param pass
+     */
     // Set new password
     public void initPassword(String pass)
     {
         password.setText(pass);
     }
 
+    /**
+     *
+     * @param event
+     * @throws Exception
+     */
     //Open generateNewPasswordWindow
     @FXML
     private void generatePassword(ActionEvent event) throws Exception
@@ -68,12 +84,17 @@ public class NewEntryController implements Initializable{
         FXMLLoader loader = new FXMLLoader();
         Pane root = (Pane) loader.load(getClass().getResource("/GenerateNewpassword/newPassword.fxml"));
         Scene scene= new Scene(root);
-       // userStage.initStyle(StageStyle.UNDECORATED);
+        userStage.initStyle(StageStyle.UNDECORATED);
         userStage.setScene(scene);
         userStage.setResizable(false);
 
         userStage.show();
     }
+
+    /**
+     *
+     * @param event
+     */
 //Clear all the text fields
     @FXML
     private void clearFields(ActionEvent event)
@@ -104,13 +125,14 @@ public class NewEntryController implements Initializable{
             stmp.setString(2, this.urladdress.getText());
             stmp.setString(3, this.password.getText());
 
-            stmp.execute();
+            //ResultSet rs = stmp.executeQuery();
+          stmp.execute();
             connection.close();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("NEW ENTRY AADDED SUCCESFULLY");
+            alert.setHeaderText("New entry added succesfully");
             alert.initStyle(StageStyle.UNDECORATED);
-            alert.getDialogPane().setBackground((new Background(new BackgroundFill(Color.LIGHTGREEN, CornerRadii.EMPTY, Insets.EMPTY))));
+            alert.getDialogPane().setBackground((new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY))));
             alert.showAndWait();
             Stage stage1 = (Stage) this.username.getScene().getWindow();
             stage1.close();
@@ -129,6 +151,10 @@ public class NewEntryController implements Initializable{
         }
     }
 
+    /**
+     *
+     * @param event
+     */
     @FXML
     private void Exit(ActionEvent event)
     {
@@ -136,7 +162,7 @@ public class NewEntryController implements Initializable{
        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText("Are you sure you want to close?");
         alert.initStyle(StageStyle.UNDECORATED);
-        alert.getDialogPane().setBackground((new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY))));
+        alert.getDialogPane().setBackground((new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY))));
         //alert.showAndWait();
         Optional<ButtonType> result = alert.showAndWait();
         if(result.get()== ButtonType.OK)

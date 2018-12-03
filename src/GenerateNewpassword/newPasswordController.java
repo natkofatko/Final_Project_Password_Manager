@@ -98,9 +98,15 @@ public class newPasswordController implements Initializable {
 
     }
 
-/*
 
- */
+
+
+
+    /**
+     *
+     * @param event
+     * @throws Exception
+     */
     @FXML
     private void onChange(ActionEvent event) throws Exception {
 
@@ -123,9 +129,11 @@ public class newPasswordController implements Initializable {
         }
     }
 
-/*
-
- */
+    /**
+     *
+     * @param length
+     * @return
+     */
     private String generatePassword(String length) {
 
         PasswordGenerator generator = new PasswordGenerator();
@@ -133,8 +141,8 @@ public class newPasswordController implements Initializable {
         return password;
     }
 
-    /*
-
+    /**
+     *
      */
     private void addRules() {
 
@@ -150,9 +158,12 @@ public class newPasswordController implements Initializable {
             rules.add(new CharacterRule(EnglishCharacterData.Special, 1));
 
     }
-/*
 
- */
+    /**
+     *
+     * @return
+     * @throws Exception
+     */
     private boolean getChoices() throws Exception {
         // TODO Auto-generated method stub
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -35,86 +36,110 @@
                   <Shadow />
                </bumpInput>
                <light>
-                  <Light.Distant color="#a9c5eb" />
+                  <Light.Distant color="#c8b9f2" />
                </light>
             </Lighting>
          </effect>
       </ImageView>
-      <Pane layoutY="-3.0" prefHeight="759.0" prefWidth="266.0" style="-fx-background-color: #3D4646;">
+      <Pane layoutY="6.0" prefHeight="759.0" prefWidth="266.0" style="-fx-background-color: #3D4646;">
          <children>
-            <JFXButton layoutX="23.0" layoutY="105.0" onAction="#addNewEntry" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Add new entry" textFill="#a4d4db">
+            <JFXButton layoutX="23.0" layoutY="105.0" onAction="#addNewEntry" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Add new entry" textFill="#f6feff">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="deleteentry" layoutX="22.0" layoutY="222.0" onAction="#deleteEverything" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Delete entry" textFill="#a4d4db">
+            <JFXButton fx:id="deleteentry" layoutX="22.0" layoutY="222.0" onAction="#deleteEverything" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Delete entry" textFill="#f6feff">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="editentry" layoutX="23.0" layoutY="183.0" onMouseClicked="#editEntry" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Edit entry" textFill="#a4d4db">
+            <JFXButton fx:id="editentry" layoutX="23.0" layoutY="183.0" onMouseClicked="#editEntry" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Edit entry" textFill="#f6feff">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <FontAwesomeIconView fill="#97d7e8" glyphName="TRASH" layoutX="43.0" layoutY="246.0" size="16.0" text="" />
-            <FontAwesomeIconView fill="#97d7e8" glyphName="EDIT" layoutX="44.0" layoutY="207.0" size="16" />
-            <FontAwesomeIconView fill="#97d7e8" glyphName="PLUS" layoutX="49.0" layoutY="131.0" size="16" text="" />
+            <FontAwesomeIconView fill="#dddddd" glyphName="TRASH" layoutX="43.0" layoutY="246.0" size="16.0" text="" />
+            <FontAwesomeIconView fill="#dddddd" glyphName="EDIT" layoutX="44.0" layoutY="207.0" size="16" />
+            <FontAwesomeIconView fill="#dadada" glyphName="PLUS" layoutX="49.0" layoutY="131.0" size="16" text="" />
             <Pane layoutX="17.0" layoutY="690.0" prefHeight="55.0" prefWidth="235.0">
                <children>
                   <FontAwesomeIconView fill="#97d7e8" glyphName="SIGN_OUT" layoutX="14.0" layoutY="33.0" size="16" />
-                  <JFXButton fx:id="logout" layoutX="14.0" layoutY="8.0" onAction="#logout" prefHeight="39.0" prefWidth="108.0" style="-fx-background-color: transparent;" text="Log out" textFill="#a4d4db">
+                  <JFXButton fx:id="logout" layoutX="14.0" layoutY="8.0" onAction="#logout" prefHeight="39.0" prefWidth="108.0" style="-fx-background-color: transparent;" text="Log out" textFill="#f6feff">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="close" layoutX="128.0" layoutY="8.0" onAction="#exit" prefHeight="39.0" prefWidth="93.0" style="-fx-background-color: transparent;" text="Close" textFill="#a4d4db">
+                  <JFXButton fx:id="close" layoutX="128.0" layoutY="8.0" onAction="#exit" prefHeight="39.0" prefWidth="93.0" style="-fx-background-color: transparent;" text="Close" textFill="#f6feff">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXButton>
-                  <FontAwesomeIconView fill="#97d7e8" glyphName="CLOSE" layoutX="128.0" layoutY="33.0" size="16" />
+                  <FontAwesomeIconView fill="#deebee" glyphName="CLOSE" layoutX="128.0" layoutY="33.0" size="16" />
                </children>
             </Pane>
-            <JFXButton fx:id="scorethestrength" layoutX="21.0" layoutY="302.0" onAction="#checkForStrength" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="       Score the strength" textFill="#a4d4db">
+            <JFXButton fx:id="scorethestrength" layoutX="12.0" layoutY="537.0" onAction="#checkForStrength" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="       Score the strength" textFill="#f6feff">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="analyzepassword" layoutX="23.0" layoutY="459.0" onAction="#checkAnalysis" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="      Analyze password " textFill="#a4d4db">
+            <JFXButton fx:id="analyzepassword" layoutX="6.0" layoutY="498.0" onAction="#checkAnalysis" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="      Analyze password " textFill="#f6feff">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <FontAwesomeIconView fill="#97d7e8" glyphName="STAR" layoutX="48.0" layoutY="327.0" size="16" />
+            <FontAwesomeIconView fill="#deebee" glyphName="STAR" layoutX="39.0" layoutY="562.0" size="16" />
             <FontAwesomeIconView />
-            <FontAwesomeIconView fill="#97d7e8" glyphName="CHECK" layoutX="48.0" layoutY="484.0" size="16" />
-            <Label layoutX="32.0" layoutY="14.0" prefHeight="21.0" prefWidth="216.0" text="NoLookPass" textFill="#8dbee0">
+            <Label layoutX="32.0" layoutY="14.0" prefHeight="21.0" prefWidth="216.0" text="NoLookPass" textFill="WHITE">
                <font>
                   <Font name="Serif Bold" size="32.0" />
                </font>
             </Label>
-            <JFXButton fx:id="refresh" layoutX="22.0" layoutY="144.0" onAction="#loadData" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Refresh" textFill="#a4d4db">
+            <JFXButton fx:id="refresh" layoutX="22.0" layoutY="144.0" onAction="#loadData" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Refresh" textFill="#f6feff">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <FontAwesomeIconView fill="#97d7e8" glyphName="REFRESH" layoutX="46.0" layoutY="169.0" size="16" />
-            <JFXButton fx:id="watchover" layoutX="21.0" layoutY="341.0" onAction="#Watchover" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Watchover" textFill="#a4d4db">
+            <FontAwesomeIconView fill="#dddddd" glyphName="REFRESH" layoutX="46.0" layoutY="169.0" size="16" />
+            <JFXButton fx:id="watchover" layoutX="12.0" layoutY="576.0" onAction="#Watchover" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Watchover" textFill="#f6feff">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <FontAwesomeIconView fill="#97d7e8" glyphName="KEY" layoutX="49.0" layoutY="366.0" size="16" />
+            <FontAwesomeIconView fill="#deebee" glyphName="KEY" layoutX="40.0" layoutY="601.0" size="16" />
+            <JFXTextField fx:id="usernamebox" alignment="CENTER" layoutX="49.0" layoutY="293.0" style="-fx-text-inner-color:: white;" unFocusColor="WHITE" />
+            <JFXTextField fx:id="passwordbox" alignment="CENTER" layoutX="49.0" layoutY="380.0" unFocusColor="WHITE" />
+            <JFXTextField fx:id="addressbox" alignment="CENTER" layoutX="51.0" layoutY="334.0" unFocusColor="WHITE" />
+            <FontAwesomeIconView fill="#dddddd" glyphName="ENVELOPE" layoutX="46.0" layoutY="355.0" size="16" />
+            <FontAwesomeIconView fill="#dddddd" glyphName="USER" layoutX="48.0" layoutY="314.0" size="16" />
+            <FontAwesomeIconView fill="#dddddd" glyphName="LOCK" layoutX="49.0" layoutY="398.0" size="16" wrappingWidth="14.857142448425293" />
+            <FontAwesomeIconView fill="#deebee" glyphName="CHECK" layoutX="38.0" layoutY="523.0" size="16" />
+            <JFXButton fx:id="update" layoutX="23.0" layoutY="430.0" onAction="#updateInfo" onMouseClicked="#editEntry" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text=" Update Info" textFill="#f6feff">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
          </children>
+         <effect>
+            <Lighting diffuseConstant="2.0" specularConstant="0.27" specularExponent="36.1">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant color="#e877ff" />
+               </light>
+            </Lighting>
+         </effect>
       </Pane>
-      <TableView fx:id="usertable" layoutX="266.0" layoutY="108.0" onMouseClicked="#onAnalyzeBTClick" prefHeight="444.0" prefWidth="810.0" style="-fx-background-color: transparent;">
+      <TableView fx:id="usertable" layoutX="266.0" layoutY="108.0" onMouseClicked="#showOnClick" prefHeight="444.0" prefWidth="810.0" style="-fx-background-color: transparent; -fx-background-color: transparent;">
         <columns>
           <TableColumn fx:id="usernamecollumn" prefWidth="210.0" text="Username" />
             <TableColumn fx:id="groupcollumn" prefWidth="186.0" text="Group" />
             <TableColumn fx:id="addresscollumn" prefWidth="197.0" text="Address" />
           <TableColumn fx:id="passwordcollumn" maxWidth="266.0" minWidth="-1.0" prefWidth="216.0" resizable="false" text="Password" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
       <TextField fx:id="search" alignment="CENTER" layoutX="879.0" layoutY="45.0" onMouseClicked="#SearchTable" prefHeight="37.0" prefWidth="189.0" promptText="Search" style="-fx-background-color: LightGrey; -fx-background-radius: 20;" />
       <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" layoutX="904.0" layoutY="69.0" size="18" />

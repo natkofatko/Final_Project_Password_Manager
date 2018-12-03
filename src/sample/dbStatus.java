@@ -15,6 +15,9 @@ public class dbStatus {
 
     Connection connection;
 
+    /**
+     *
+     */
     public dbStatus() {
         try {
 
@@ -35,6 +38,10 @@ public class dbStatus {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isDatabaseConnected()
     {
         return this.connection!=null;

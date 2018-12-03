@@ -1,5 +1,6 @@
 package UserWindow;
 
+import Utility.AlertBox;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,7 +40,7 @@ public class LoginController implements Initializable {
     @FXML
     private TextField search, displaypassword;
     @FXML
-    private JFXButton addnewentry, deleteentry, editentry, generatepassword, scorethestrength, refresh, watchover;
+    private JFXButton addnewentry, deleteentry, editentry, generatepassword, scorethestrength, update, refresh, watchover;
     @FXML
     private JFXButton logout, exit, analyzepassword;
     @FXML
@@ -55,8 +56,64 @@ public class LoginController implements Initializable {
     private dbConnection db;
     private ObservableList<UserData> data;
     private UserData user;
+    public TextField usernamebox,passwordbox, addressbox;
 
 
+
+
+    /**
+     * Load Data into text fields
+     * @throws Exception
+     */
+
+    private static String tempUsername;
+@FXML
+    private void showOnClick() throws  Exception
+    {
+        Connection con = dbConnection.getCOnnection();
+        ResultSet rs = con.createStatement().executeQuery("SELECT* FROM USERDATA");
+
+        UserData user1=(UserData)usertable.getSelectionModel().getSelectedItem();
+
+        usernamebox.setText(user1.getUsername());
+        addressbox.setText(user1.getAddress());
+        passwordbox.setText(user1.getPassword());
+        usernamebox.setStyle("-fx-text-fill: white");
+        addressbox.setStyle("-fx-text-fill: white");
+        passwordbox.setStyle("-fx-text-fill: white");
+        rs.close();
+
+    }
+
+    /**
+     *
+     */
+    @FXML
+    private void updateInfo(ActionEvent event) throws Exception{
+
+         Connection conn = dbConnection.getCOnnection();
+        //PreparedStatement prs = conn.prepareStatement("UPDATE USERDATA SET username=? WHERE username = ?");
+        PreparedStatement prs = conn.prepareStatement("UPDATE USERDATA SET username=?, address =?, password =?where username='"+usernamecollumn.getText()+"'");
+        try {
+             prs.setString(1,usernamebox.getText());
+           prs.setString(2,addressbox.getText());
+            prs.setString(3,passwordbox.getText());
+            prs.executeUpdate();
+            System.out.println("Info updated");
+            prs.close();
+           // loadData(event);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     *
+     * @param url
+     * @param rs
+     */
     public void initialize(URL url, ResourceBundle rs) {
 
         Tooltip tooltip1 = new Tooltip();
@@ -69,8 +126,9 @@ public class LoginController implements Initializable {
     }
 
     /*
-    Edid entry by clicking twice on selected field
+    Edit entry by clicking twice on selected field
      */
+
     @FXML
     private void editEntry(MouseEvent event) {
 
@@ -80,6 +138,11 @@ public class LoginController implements Initializable {
         addresscollumn.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
+    /**
+     *
+     * @param event
+     * @throws Exception
+     */
     @FXML
     private void Watchover(ActionEvent event) throws Exception
     {
@@ -95,13 +158,6 @@ public class LoginController implements Initializable {
         userStage.show();
     }
 
-    /*
-    this method will open new Entry window, load selected entry and allow you to make some changes to it
-     */
-    @FXML
-    private void editEntryAllFields(ActionEvent event) {
-
-    }
 
     /*
     This method removes selected entry from the UI just temporary
@@ -116,12 +172,20 @@ public class LoginController implements Initializable {
     }
 
 
+    /**
+     *
+     * @param event
+     */
     @FXML
     private void exit(ActionEvent event) {
         Stage stage = (Stage) this.search.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     *
+     * @param event
+     */
     @FXML
     private void generateNewPassword(ActionEvent event) {
         String strongPassword = "";
@@ -156,6 +220,11 @@ public class LoginController implements Initializable {
 
     }
 
+    /**
+     *
+     * @param event
+     * @throws Exception
+     */
     @FXML
     private void checkForStrength(ActionEvent event) throws Exception {
 
@@ -172,6 +241,11 @@ public class LoginController implements Initializable {
     }
 
 
+    /**
+     *
+     * @param event
+     * @throws Exception
+     */
     @FXML
     private void checkAnalysis(ActionEvent event) throws Exception {
 
@@ -186,6 +260,12 @@ public class LoginController implements Initializable {
         userStage.show();
 
     }
+
+    /**
+     *
+     * @param event
+     * @throws Exception
+     */
     @FXML
     private void addNewEntry(ActionEvent event) throws Exception {
 
@@ -201,11 +281,21 @@ public class LoginController implements Initializable {
 
     }
 
+
+    /*
+   this method will open new Entry window, load selected entry and allow you to make some changes to it
+    */
+    @FXML
+    private void editEntryAllFields(ActionEvent event) throws Exception {
+
+    }
+
     /*
     Load all the information from database and display them in table
      */
     @FXML
-    private void loadData(ActionEvent event) {
+    private void loadData(ActionEvent event)  {
+
         try {
             Connection conn = dbConnection.getCOnnection();
             this.data = FXCollections.observableArrayList();
@@ -221,6 +311,7 @@ public class LoginController implements Initializable {
             this.usertable.setItems(null);
             this.usertable.setItems(this.data);
 
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -229,12 +320,18 @@ public class LoginController implements Initializable {
     /*
 
      */
+
+    /**
+     *
+     * @param event
+     * @throws Exception
+     */
     @FXML
     private void logout(ActionEvent event) throws Exception {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText("Are you sure you want to log out?");
         alert.initStyle(StageStyle.UNDECORATED);
-        alert.getDialogPane().setBackground((new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY))));
+        alert.getDialogPane().setBackground((new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY))));
         //alert.showAndWait();
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
@@ -258,7 +355,14 @@ public class LoginController implements Initializable {
             alert.close();
         }
     }
-@FXML
+
+    /**
+     *
+     * @param event
+     * @return
+     * @throws Exception
+     */
+    @FXML
     public ObservableList<UserData> getEntries2 (ActionEvent event) throws Exception{
         // TODO Auto-generated method stub
 
@@ -273,6 +377,12 @@ public class LoginController implements Initializable {
         return null;
     }
 
+
+    /**
+     *
+     * @return
+     * @throws Exception
+     */
     public ArrayList<UserData> getEntries() throws Exception {
         Connection conn = dbConnection.getCOnnection();
         ArrayList<UserData> entryList = new ArrayList<>();
@@ -289,7 +399,11 @@ public class LoginController implements Initializable {
     }
 
 
-
+    /**
+     *
+     * @param event
+     * @throws Exception
+     */
     @FXML
     private void onAnalyzeBTClick(MouseEvent event) throws Exception {
 System.out.println("Hello");
@@ -313,9 +427,11 @@ Connection conn= dbConnection.getCOnnection();
         }
     }
 
+
     /*
     This method will delete all user information from  the database
      */
+
     public void deleteEverything(ActionEvent event) throws Exception {
         Connection conn = dbConnection.getCOnnection();
         UserData selectedUser = usertable.getSelectionModel().getSelectedItem();
@@ -329,7 +445,13 @@ Connection conn= dbConnection.getCOnnection();
             loadData(event);
         }
     }
-@FXML
+
+    /**
+     *
+     * @param event
+     * @throws Exception
+     */
+    @FXML
     public void ScoreTheStrength(ActionEvent event) throws Exception {
     ResultSet rs;
 

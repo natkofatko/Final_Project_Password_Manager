@@ -14,39 +14,39 @@
 
 <AnchorPane prefHeight="473.0" prefWidth="393.0" style="-fx-border-color: blue;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scoreTheStrength.ScoreController">
    <children>
-      <ImageView fitHeight="471.0" fitWidth="384.0" layoutX="9.0" layoutY="4.0" pickOnBounds="true" smooth="false">
+      <ImageView fitHeight="483.0" fitWidth="406.0" layoutX="-2.0" layoutY="-2.0" pickOnBounds="true" smooth="false">
          <image>
             <Image url="@../oferta-seguridad-informatica.jpg" />
          </image>
          <effect>
-            <Lighting diffuseConstant="1.49" specularConstant="1.44" specularExponent="0.0" surfaceScale="10.0">
+            <Lighting diffuseConstant="0.93" specularConstant="1.66" specularExponent="20.49" surfaceScale="10.0">
                <bumpInput>
-                  <Shadow color="#bf2323" height="111.18" radius="46.540000000000006" width="76.98" />
+                  <Shadow color="#bf2323" height="94.08000000000001" radius="42.265" width="76.98" />
                </bumpInput>
                <light>
-                  <Light.Distant color="#a2bbff" />
+                  <Light.Distant color="#562a57" />
                </light>
             </Lighting>
          </effect>
       </ImageView>
-      <JFXTextField fx:id="password" alignment="CENTER" focusColor="#b3e3ff" labelFloat="true" layoutX="85.0" layoutY="156.0" prefHeight="42.0" prefWidth="240.0" promptText="Password">
+      <JFXTextField fx:id="password" alignment="CENTER" focusColor="#b3e3ff" labelFloat="true" layoutX="85.0" layoutY="156.0" prefHeight="42.0" prefWidth="240.0" promptText="Password" style="-fx-text-fill: white; -fx-prompt-text-fill: lightgrey;">
          <font>
             <Font size="19.0" />
          </font>
       </JFXTextField>
-      <JFXButton fx:id="checkthestrength" layoutX="67.0" layoutY="229.0" onAction="#checkForPasswordStrength" prefHeight="51.0" prefWidth="275.0" style="-fx-background-color: lightblue; -fx-background-radius: 20;" text="Check the strength">
+      <JFXButton fx:id="checkthestrength" layoutX="67.0" layoutY="229.0" onAction="#checkForPasswordStrength" prefHeight="51.0" prefWidth="275.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Check the strength">
          <font>
             <Font size="21.0" />
          </font>
       </JFXButton>
       <TextField fx:id="strength" layoutX="107.0" layoutY="316.0" prefHeight="42.0" prefWidth="195.0" style="-fx-background-radius: 20;" />
-      <JFXButton fx:id="close" layoutX="251.0" layoutY="396.0" onAction="#close" prefHeight="51.0" prefWidth="118.0" style="-fx-background-color: lightblue; -fx-background-radius: 20;" text="  Close">
+      <JFXButton fx:id="close" layoutX="223.0" layoutY="395.0" onAction="#close" prefHeight="51.0" prefWidth="118.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="  Close">
          <font>
             <Font size="21.0" />
          </font>
       </JFXButton>
-      <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" layoutX="269.0" layoutY="427.0" size="18" />
-      <JFXButton fx:id="clear" layoutX="97.0" layoutY="396.0" onAction="#clearFields" prefHeight="51.0" prefWidth="118.0" style="-fx-background-color: lightblue; -fx-background-radius: 20;" text="Clear">
+      <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" layoutX="240.0" layoutY="426.0" size="18" />
+      <JFXButton fx:id="clear" layoutX="69.0" layoutY="395.0" onAction="#clearFields" prefHeight="51.0" prefWidth="118.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Clear">
          <font>
             <Font size="21.0" />
          </font>

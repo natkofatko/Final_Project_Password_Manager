@@ -13,6 +13,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="682.0" prefWidth="526.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewEntry.NewEntryController">
@@ -22,26 +24,34 @@
             <Image url="@../oferta-seguridad-informatica.jpg" />
          </image>
          <effect>
-            <Lighting diffuseConstant="2.0" specularConstant="2.0" specularExponent="2.94" surfaceScale="6.5">
+            <Lighting diffuseConstant="2.0" specularConstant="1.29" specularExponent="5.87" surfaceScale="4.51">
                <bumpInput>
                   <Shadow />
                </bumpInput>
                <light>
-                  <Light.Distant color="#9fb5ed" />
+                  <Light.Distant color="#281c28" />
                </light>
             </Lighting>
          </effect>
       </ImageView>
       <Pane layoutX="84.0" layoutY="81.0" prefHeight="591.0" prefWidth="359.0">
          <children>
-            <JFXTextField fx:id="username" labelFloat="true" layoutX="46.0" layoutY="87.0" prefHeight="31.0" prefWidth="281.0" promptText="      Username" />
-            <JFXTextField fx:id="urladdress" labelFloat="true" layoutX="55.0" layoutY="227.0" prefHeight="31.0" prefWidth="274.0" promptText="      URL address" />
-            <JFXPasswordField fx:id="password" labelFloat="true" layoutX="53.0" layoutY="156.0" prefHeight="31.0" prefWidth="274.0" promptText="      Password " />
-            <JFXComboBox fx:id="groups" labelFloat="true" layoutX="53.0" layoutY="291.0" prefHeight="31.0" prefWidth="281.0" promptText="Groups" />
+            <JFXTextField fx:id="username" focusColor="#b1bad7" labelFloat="true" layoutX="46.0" layoutY="87.0" prefHeight="31.0" prefWidth="281.0" promptText="      Username" style="-fx-text-fill: white; -fx-prompt-text-fill: lightgrey;" unFocusColor="#e1e1e1" />
+            <JFXTextField fx:id="urladdress" labelFloat="true" layoutX="55.0" layoutY="227.0" prefHeight="31.0" prefWidth="274.0" promptText="      URL address" style="-fx-prompt-text-fill: lightgrey; -fx-text-fill: white;" unFocusColor="#dddddd" />
+            <JFXPasswordField fx:id="password" labelFloat="true" layoutX="53.0" layoutY="156.0" prefHeight="31.0" prefWidth="274.0" promptText="      Password " style="-fx-prompt-text-fill: lightgrey; -fx-text-fill: white;">
+               <unFocusColor>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </unFocusColor></JFXPasswordField>
+            <JFXComboBox fx:id="groups" labelFloat="true" layoutX="53.0" layoutY="291.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="31.0" prefWidth="281.0" promptText="Groups" style="-fx-prompt-text-fill: lightgrey;" unFocusColor="WHITE" />
             <JFXButton fx:id="addentry" layoutX="24.0" layoutY="377.0" onAction="#addNewEntry" prefHeight="31.0" prefWidth="312.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Add Entry" />
             <JFXButton layoutX="24.0" layoutY="455.0" onAction="#clearFields" prefHeight="31.0" prefWidth="312.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Clear" />
             <JFXButton layoutX="24.0" layoutY="494.0" onAction="#Exit" prefHeight="31.0" prefWidth="312.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Cancel" />
-            <Label layoutX="77.0" layoutY="28.0" prefHeight="21.0" prefWidth="196.0" text="New Entry">
+            <Label layoutX="77.0" layoutY="28.0" prefHeight="21.0" prefWidth="196.0" text="New Entry" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
@@ -53,7 +63,7 @@
             <JFXButton fx:id="generatenewpassword" layoutX="24.0" layoutY="416.0" onAction="#generatePassword" prefHeight="31.0" prefWidth="312.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Generate new password" />
          </children>
       </Pane>
-      <Label layoutX="14.0" layoutY="14.0" prefHeight="40.0" prefWidth="141.0" text="NoLookPass">
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="40.0" prefWidth="141.0" text="NoLookPass" textFill="WHITE">
          <font>
             <Font name="SimSun" size="27.0" />
          </font>

@@ -19,22 +19,41 @@ private  boolean result;
 
 private Watchtower watch = new Watchtower();
 
+    /**
+     *
+     * @param url
+     * @param rb
+     */
     public void initialize(URL url, ResourceBundle rb)
     {
     }
 
+
+    /**
+     *
+     * @param event
+     */
     @FXML
     private void closeWindow(ActionEvent event) {
         Stage stage = (Stage) this.urladdress.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     *
+     * @param event
+     */
     @FXML
     private void clearFields(ActionEvent event) {
         urladdress.setText("");
         security.setText("");
     }
 
+    /**
+     *
+     * @param event
+     * @throws Exception
+     */
     @FXML
     private void checkForSecurity(ActionEvent event) throws Exception
     {

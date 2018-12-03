@@ -25,12 +25,21 @@ public class ScoreController implements Initializable {
 
     }
 //
+
+    /**
+     *
+     * @param event
+     */
     @FXML
     private void close(ActionEvent event) {
         Stage stage = (Stage) this.close.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     *
+     * @param event
+     */
     @FXML
     private void clearFields(ActionEvent event) {
     password.setText("");
@@ -38,6 +47,10 @@ public class ScoreController implements Initializable {
 
     }
 
+    /**
+     *
+     * @param event
+     */
     @FXML
     private void checkForPasswordStrength(ActionEvent event) {
         String passwordToCheck = this.password.getText();

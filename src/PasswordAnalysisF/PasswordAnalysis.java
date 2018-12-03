@@ -56,6 +56,10 @@ public class PasswordAnalysis implements Initializable {
     private Label NumofRepeatedChar, IllegalSequenceLabel,NumofLowerC,NumofSymbols,NumofUpperC,NumberofNums,NumberofChars,PWLength,PWPercentage;
 
 
+    /**
+     *
+     * @param event
+     */
     @FXML
     private void onChange(KeyEvent event) {
         isValid = isPasswordValid();
@@ -64,7 +68,10 @@ public class PasswordAnalysis implements Initializable {
     }
 
 
-
+    /**
+     *
+     * @param event
+     */
     @FXML
     private void GoBack(ActionEvent event)
     {
@@ -73,6 +80,10 @@ public class PasswordAnalysis implements Initializable {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isPasswordValid() {
         // System.out.println(PasswordInput.getText());
         scoreVar = 0;
@@ -91,6 +102,9 @@ public class PasswordAnalysis implements Initializable {
         return isPWValid;
     }
 
+    /**
+     *
+     */
     private void setProgressbarColor() {
         if (scoreVar < 30)
 
@@ -107,6 +121,9 @@ public class PasswordAnalysis implements Initializable {
         }
     }
 
+    /**
+     *
+     */
     private void calculateScore() {
 
         if (Password.length() == 0)
@@ -132,6 +149,9 @@ public class PasswordAnalysis implements Initializable {
         PWPercentage.setText(Double.toString(scoreVar) + "%");
     }
 
+    /**
+     *
+     */
     private void setLabelColors() {
         // TODO Auto-generated method stub
         for (Label label : labelValidityMap.keySet()) {
@@ -146,6 +166,9 @@ public class PasswordAnalysis implements Initializable {
 
     }
 
+    /**
+     *
+     */
     private void checkEachValidation() {
         // TODO Auto-generated method stub
         initializeErrorMap();
@@ -167,20 +190,35 @@ public class PasswordAnalysis implements Initializable {
     }
 
 
-
+    /**
+     *
+     * @param password
+     */
     public void setPasswordFieldText(String password) {
         PasswordInput.setText(password);
     }
 
+    /**
+     *
+     * @param isScreenLoaded
+     */
     public void setIsScreenLoaded(boolean isScreenLoaded) {
         IsScreenLoaded = isScreenLoaded;
     }
 
+
+    /**
+     *
+     * @return
+     */
     public RuleResult getResult() {
         return result;
     }
 
 
+    /**
+     *
+     */
     private void initializeLabels() {
         // TODO Auto-generated method stub
 
@@ -194,6 +232,9 @@ public class PasswordAnalysis implements Initializable {
         labelValidityMap.put(NumofSymbols, false);
     }
 
+    /**
+     *
+     */
     private void initializeErrorMap() {
         errorMap.put("TOO_SHORT", PWLength);
         errorMap.put("INSUFFICIENT_UPPERCASE", NumofUpperC);
@@ -207,6 +248,10 @@ public class PasswordAnalysis implements Initializable {
         errorMap.put("ILLEGAL_QWERTY_SEQUENCE", IllegalSequenceLabel);
     }
 
+    /**
+     *
+     * @return
+     */
     private boolean validatePassword() {
         // TODO Auto-generated method stub
         result = validator.validate(new PasswordData(new String(Password)));
@@ -215,6 +260,9 @@ public class PasswordAnalysis implements Initializable {
         return false;
     }
 
+    /**
+     *
+     */
     private void addRules() {
         validator = new PasswordValidator(Arrays.asList(
                 // length between 8 and 20 characters
@@ -243,6 +291,12 @@ public class PasswordAnalysis implements Initializable {
 
     }
 
+
+    /**
+     *
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method stub
@@ -257,6 +311,9 @@ public class PasswordAnalysis implements Initializable {
         Progress.progressProperty().bind(score.numberProperty());
     }
 
+    /**
+     *
+     */
     public void initializeScreen() {
         // TODO Auto-generated method stub
         errorMap = new HashMap<>();
@@ -264,6 +321,11 @@ public class PasswordAnalysis implements Initializable {
         addRules();
     }
 
+    /**
+     *
+     * @param tf
+     * @param maxLength
+     */
     public static void addTextLimiter(final TextField tf, final int maxLength) {
         tf.textProperty().addListener((ov, oldValue, newValue) -> {
             if (tf.getText().length() > maxLength) {
@@ -274,10 +336,18 @@ public class PasswordAnalysis implements Initializable {
     }
 
 
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return Password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         Password = password;
     }
