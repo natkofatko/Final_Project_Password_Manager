@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="537.0" prefWidth="279.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="WatchTawer.watchtawerController">
+    <children>
+        <ImageView fitHeight="535.0" fitWidth="402.0" layoutX="-16.0" layoutY="1.0" pickOnBounds="true" smooth="false">
+            <image>
+                <Image url="@../oferta-seguridad-informatica.jpg" />
+            </image>
+            <effect>
+                <Lighting diffuseConstant="0.83" specularConstant="1.93" specularExponent="17.08" surfaceScale="1.95">
+                    <bumpInput>
+                        <Shadow color="#bf2323" height="77.04679687500001" radius="38.00669921875" width="76.98" />
+                    </bumpInput>
+                    <light>
+                        <Light.Distant color="#562a57" />
+                    </light>
+                </Lighting>
+            </effect>
+        </ImageView>
+        <JFXTextField fx:id="urladdress" alignment="CENTER" focusColor="WHITE" labelFloat="true" layoutX="85.0" layoutY="156.0" prefHeight="42.0" prefWidth="240.0" promptText="Enter website address" style="-fx-text-fill: white; -fx-prompt-text-fill: lightgrey;" unFocusColor="WHITE">
+            <font>
+                <Font size="23.0" />
+            </font>
+        </JFXTextField>
+        <JFXButton fx:id="checkforsecurity" layoutX="67.0" layoutY="247.0" onAction="#checkForSecurity" prefHeight="36.0" prefWidth="275.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Check for security">
+            <font>
+                <Font size="21.0" />
+            </font>
+        </JFXButton>
+        <TextField fx:id="security" alignment="CENTER" layoutX="35.0" layoutY="316.0" prefHeight="42.0" prefWidth="342.0" style="-fx-background-color: white; -fx-background-radius: 20;" />
+        <JFXButton fx:id="close" layoutX="216.0" layoutY="398.0" onAction="#closeWindow" prefHeight="42.0" prefWidth="118.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="  Close">
+            <font>
+                <Font size="21.0" />
+            </font>
+        </JFXButton>
+        <FontAwesomeIconView fill="#fcfcfc" glyphName="CLOSE" layoutX="232.0" layoutY="427.0" size="18" />
+        <JFXButton fx:id="clear" layoutX="67.0" layoutY="402.0" onAction="#clearFields" prefHeight="45.0" prefWidth="118.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Clear">
+            <font>
+                <Font size="21.0" />
+            </font>
+        </JFXButton>
+      <FontAwesomeIconView fill="#fcfcfc" glyphName="EDIT" layoutX="78.0" layoutY="430.0" size="18" />
+      <Label alignment="CENTER" layoutX="6.0" layoutY="14.0" prefHeight="50.0" prefWidth="182.0" text="NoLookPass" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font name="Serif Regular" size="27.0" />
+         </font>
+      </Label>
+    </children>
+
+</AnchorPane>

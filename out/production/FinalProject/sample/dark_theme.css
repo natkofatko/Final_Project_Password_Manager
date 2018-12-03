@@ -1,0 +1,25 @@
+/*
+declare global variables
+*/
+
+* {
+-fx-primary : #2A2E37;
+-fx-secondary:#FFFF8D;
+-fx-primarytext: #C3BE37;
+-fx-red:#FF0000;
+}
+.root{
+-fx-background: -fx-white;
+}
+
+.wrong-credentials{
+-fx-unfocus-color: -fx-red;
+-fx-focuse-color: -fx-red;
+}
+
+.glyph-icon
+{
+-fx-fill: -fx-red;
+}
+
+
