@@ -10,6 +10,11 @@ public class Watchtower {
 
     private Map<String, Integer> repeatPasswords = new HashMap<>();
 
+    /**
+     *
+     * @param password
+     * @return
+     */
     public int lookForRepeats(String password) {
         repeatPasswords.put(password, repeatPasswords.getOrDefault(password, 0) + 1);
         int repeats = 0;
@@ -21,6 +26,13 @@ public class Watchtower {
         return repeats;
     }
 
+    /**
+     *
+     * @param website
+     * @return
+     * @throws IOException
+     * @throws MalformedURLException
+     */
     public URL standardiseWebsite(String website) throws IOException, MalformedURLException {
         //check whether the website has a protocol
         //adds if it is missing
@@ -48,6 +60,13 @@ public class Watchtower {
         return site;
     }
 
+    /**
+     *
+     * @param website
+     * @return
+     * @throws IOException
+     * @throws MalformedURLException
+     */
     public boolean checkUnsecure(String website) throws IOException, MalformedURLException {
         URL site = standardiseWebsite(website);
         if (site.getProtocol().equals("http")) {
