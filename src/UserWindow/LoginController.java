@@ -86,7 +86,7 @@ public class LoginController implements Initializable {
     }
 
     /**
-     *
+     * Update current info from the database
      */
     @FXML
     private void updateInfo(ActionEvent event) throws Exception{
@@ -139,7 +139,7 @@ public class LoginController implements Initializable {
     }
 
     /**
-     *
+     * Check if given website is valid
      * @param event
      * @throws Exception
      */
@@ -160,7 +160,7 @@ public class LoginController implements Initializable {
 
 
     /*
-    This method removes selected entry from the UI just temporary
+    This method removes selected entry from the UI, just temporary
      */
     @FXML
     private void deleteEntry(ActionEvent event) {
@@ -173,7 +173,7 @@ public class LoginController implements Initializable {
 
 
     /**
-     *
+     * close the window
      * @param event
      */
     @FXML
@@ -182,46 +182,10 @@ public class LoginController implements Initializable {
         stage.close();
     }
 
-    /**
-     *
-     * @param event
-     */
-    @FXML
-    private void generateNewPassword(ActionEvent event) {
-        String strongPassword = "";
-        int passwordLength = (int) (Math.random() * 5 + 12); //returns a minimum of 12
 
-        String lowerCase = "abcdefghijklmnopqrstuvwxyz";
-        String upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String integers = "0123456789";
-        String specialCharacters = "!" + "\"" + "#$%&" + "\'" + "()*,+-./:\\;<=>?@[\\]^_`{|}~";
-
-        for (int i = 0; i < passwordLength; i++) {
-            int a = (int) (Math.random() * 3); //generates a number between 0 and 2
-            if (a == 0) {
-                int index = (int) (Math.random() * 26);
-                int upperOrLower = (int) (Math.random() * 2);
-                if (upperOrLower == 0) {
-                    strongPassword += lowerCase.charAt(index);
-                } else {
-                    strongPassword += upperCase.charAt(index);
-                }
-            } else if (a == 1) {
-                int index2 = (int) (Math.random() * integers.length());
-                strongPassword += integers.charAt(index2);
-            } else {
-                int index3 = (int) (Math.random() * specialCharacters.length());
-                strongPassword += specialCharacters.charAt(index3);
-            }
-
-        }
-        displaypassword.setText(strongPassword);
-
-
-    }
 
     /**
-     *
+     *  open the window -strength of the password
      * @param event
      * @throws Exception
      */
@@ -242,7 +206,7 @@ public class LoginController implements Initializable {
 
 
     /**
-     *
+     * open the password Analysis window
      * @param event
      * @throws Exception
      */
@@ -262,7 +226,7 @@ public class LoginController implements Initializable {
     }
 
     /**
-     *
+     * open the new entry window
      * @param event
      * @throws Exception
      */
@@ -322,7 +286,8 @@ public class LoginController implements Initializable {
      */
 
     /**
-     *
+     * logout the current user
+     * show alert box
      * @param event
      * @throws Exception
      */

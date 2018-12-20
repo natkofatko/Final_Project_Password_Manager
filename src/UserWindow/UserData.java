@@ -18,6 +18,7 @@ public class UserData {
      * @param password
      */
 
+
     public UserData(String username, String address, String password) {
         this.username = new SimpleStringProperty(username);
         // this.category=new SimpleStringProperty(category);

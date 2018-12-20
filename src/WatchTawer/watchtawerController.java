@@ -67,7 +67,17 @@ private Watchtower watch = new Watchtower();
       }
 
     }
-
+//
+//    @FXML
+//    private void encryptPassword(ActionEvent event) throws Exception
+//    {
+//        Encrypt en2= new Encrypt();
+//        byte[]en3= en2.encrypt("Hello");
+//        security.setText(System.out.println(en3));
+//        security.setText(en2.decrypt(en3));
+//
+//
+//    }
 
 
 

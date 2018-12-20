@@ -70,11 +70,11 @@ public class NewEntryController implements Initializable{
     }
 
     /**
-     *
+     *Open generateNewPasswordWindow
      * @param event
      * @throws Exception
      */
-    //Open generateNewPasswordWindow
+    //
     @FXML
     private void generatePassword(ActionEvent event) throws Exception
     {
@@ -92,11 +92,11 @@ public class NewEntryController implements Initializable{
     }
 
     /**
-     *
+     *Clear all the text fields
+
      * @param event
      */
-//Clear all the text fields
-    @FXML
+//    @FXML
     private void clearFields(ActionEvent event)
     {
         username.setText("");

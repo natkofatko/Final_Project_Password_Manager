@@ -69,7 +69,7 @@ public class PasswordAnalysis implements Initializable {
 
 
     /**
-     *
+     * clese the window
      * @param event
      */
     @FXML
@@ -81,7 +81,7 @@ public class PasswordAnalysis implements Initializable {
     }
 
     /**
-     *
+     * check if password is valid
      * @return
      */
     public boolean isPasswordValid() {
@@ -103,7 +103,7 @@ public class PasswordAnalysis implements Initializable {
     }
 
     /**
-     *
+     * set the collor of a progress bar to red green or orange
      */
     private void setProgressbarColor() {
         if (scoreVar < 30)
@@ -122,7 +122,7 @@ public class PasswordAnalysis implements Initializable {
     }
 
     /**
-     *
+     * calculate the % of a password
      */
     private void calculateScore() {
 
@@ -150,7 +150,7 @@ public class PasswordAnalysis implements Initializable {
     }
 
     /**
-     *
+     * set the lable color for green or red depending on meeting criteria
      */
     private void setLabelColors() {
         // TODO Auto-generated method stub
@@ -167,6 +167,7 @@ public class PasswordAnalysis implements Initializable {
     }
 
     /**
+     *
      *
      */
     private void checkEachValidation() {
@@ -322,7 +323,7 @@ public class PasswordAnalysis implements Initializable {
     }
 
     /**
-     *
+     * set text restriction
      * @param tf
      * @param maxLength
      */

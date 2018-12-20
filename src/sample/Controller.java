@@ -49,7 +49,8 @@ public class Controller implements Initializable {
      *
      * @param event
      */
-    //this will close the current window
+    //this will close the current window,
+    //show the alert box
     @FXML
     private void cancel(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -141,7 +142,7 @@ public class Controller implements Initializable {
      * @param event
      * @throws IOException
      */
-    //Register new user
+    //open a window for a new user
     @FXML
     private void SignUp(ActionEvent event) throws IOException {
         // Stage stage = (Stage) this.signup.getScene().getWindow();

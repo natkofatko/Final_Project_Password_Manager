@@ -39,7 +39,7 @@ public class dbStatus {
     }
 
     /**
-     *
+     * check if database is connected
      * @return
      */
     public boolean isDatabaseConnected()
@@ -47,6 +47,14 @@ public class dbStatus {
         return this.connection!=null;
     }
 
+
+    /**
+     * Take the credentials from database and use it for a login
+     * @param user
+     * @param pass
+     * @return
+     * @throws Exception
+     */
     public boolean isUserLogIn(String user,String pass) throws Exception{
         PreparedStatement pr = null;
         ResultSet rs = null;

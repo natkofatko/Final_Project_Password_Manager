@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 public class AlertBox {
 
     /**
-     *
+     * create alert box
      * @param BoxTitle
      * @param AlertMessage
      * @throws Exception
@@ -23,7 +23,7 @@ public class AlertBox {
             window.setHeight(250);
             window.setWidth(250);
 
-            Button bt = new Button("Close");
+            Button bt = new Button("OK");
             bt.setOnAction(e -> {
                 window.close();
                 e.consume();

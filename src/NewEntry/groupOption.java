@@ -1,5 +1,8 @@
 package NewEntry;
 
+/**
+ * this was supposet to be a drop box of a different sites, but ebentually it was not used in the project dur to some error
+ */
 public enum groupOption {
 
     SocialMedia, Blogs, eMail, Games, Banking, Home, Software, Network;

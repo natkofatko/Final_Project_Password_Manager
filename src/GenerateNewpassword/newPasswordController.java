@@ -43,6 +43,10 @@ public class newPasswordController implements Initializable {
     private Button generatepassword, ok, cancel;
 
 
+    /**
+     * Close the window
+     * @param event
+     */
     @FXML
     private void closeWindow(ActionEvent event) {
         Stage stage = (Stage) this.PasswordLength.getScene().getWindow();
@@ -76,7 +80,7 @@ public class newPasswordController implements Initializable {
     }
 
     /**
-     *
+     * Clear all the fields
      * @param event
      */
     @FXML
@@ -99,11 +103,8 @@ public class newPasswordController implements Initializable {
     }
 
 
-
-
-
     /**
-     *
+     * this method will check for a lenght of password. If meets the criteria it will generate the new password
      * @param event
      * @throws Exception
      */
@@ -160,7 +161,7 @@ public class newPasswordController implements Initializable {
     }
 
     /**
-     *
+     * Choose the criteria for a new password (uppercase, lowercase, digits etc)
      * @return
      * @throws Exception
      */

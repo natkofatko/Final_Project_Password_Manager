@@ -18,6 +18,7 @@ public class dbConnection {
 
     /**
      *
+     * Connect to database
      * @return
      * @throws SQLException
      */

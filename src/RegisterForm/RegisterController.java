@@ -34,12 +34,13 @@ private Connection conn;
 private Alert alert;
 
     /**
-     *
+     *this is text for a privacy policy
      * @param url
      * @param rs
      */
     public void initialize(URL url, ResourceBundle rs)
     {
+
         Tooltip tooltip1 = new Tooltip();
         tooltip1.setText("With any service, it is very important to think about your privacy.\n We believe strongly " +
                 "that your data is yours and we don’t want to know anything about it. \n" +
@@ -56,7 +57,7 @@ private Alert alert;
      *
      * @param event
      */
-    ////code for registration
+    ////code for registration new user
         @FXML
         private void addNewUser(ActionEvent event)
         {
@@ -144,7 +145,7 @@ private Alert alert;
         }
 
     /**
-     *
+     * close the window
      * @param event
      */
     @FXML
@@ -157,7 +158,7 @@ private Alert alert;
 
 
     /**
-     *
+     * link to sign in
      * @param event
      */
     @FXML

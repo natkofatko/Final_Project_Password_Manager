@@ -100,7 +100,7 @@
                </font>
             </JFXButton>
             <FontAwesomeIconView fill="#dddddd" glyphName="REFRESH" layoutX="46.0" layoutY="169.0" size="16" />
-            <JFXButton fx:id="watchover" layoutX="12.0" layoutY="576.0" onAction="#Watchover" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Watchover" textFill="#f6feff">
+            <JFXButton fx:id="watchover" layoutX="12.0" layoutY="576.0" onAction="#Watchover" prefHeight="22.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Watchtower" textFill="#f6feff">
                <font>
                   <Font size="18.0" />
                </font>

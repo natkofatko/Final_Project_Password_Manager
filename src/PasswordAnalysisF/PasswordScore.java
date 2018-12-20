@@ -5,9 +5,9 @@ import javafx.beans.property.SimpleDoubleProperty;
 
 public class PasswordScore {
 
-
-
-
+    /**
+     *
+     */
     private DoubleProperty Passwordscore;
 
     public final double getPasswordscore() {
